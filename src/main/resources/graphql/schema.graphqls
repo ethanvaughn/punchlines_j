@@ -1,3 +1,11 @@
 type Query {
     health: String!
+    get_all: [Line!]!
+}
+
+type Line {
+    id: ID!
+    line: String
+    insertedAt: String!
+    modifiedAt: String!
 }

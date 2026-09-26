@@ -14,7 +14,12 @@ mvn spring-boot:run
 
 The database is available to the application at `db:5432` and is forwarded to local port `5432`. The application listens on port `8080`.
 
+
 ## Database
+
+Local database credentials are `app` / `app`. Database changes are managed by Flyway migrations in `src/main/resources/db/migration/`; Hibernate validates the migrated schema at startup.
+
+Flyway runs the initial migration automatically when Spring Boot starts.
 
 Connect to the development database from the devcontainer terminal:
 
@@ -22,8 +27,19 @@ Connect to the development database from the devcontainer terminal:
 PGPASSWORD=app psql -h db -U app -d appdb
 ```
 
-When prompted, enter the password `app`.
+Install some starter punchlines:
 
+```sh
+PGPASSWORD=app psql -h db -U app -d appdb -f src/dev_sql/lines.sql
+```
+
+## Using Hibernate
+When troubleshooting SQL statements, view them in the output logs by adding the following line to `src/main/resources/application.properties`:
+```
+spring.jpa.show-sql=true
+```
+
+## GraphQL endpoint
 The GraphQL endpoint is available at `http://localhost:8080/graphql`. Query the
 Spring health status with:
 
@@ -37,4 +53,10 @@ When the application and PostgreSQL are healthy, the response contains
 `{"data":{"health":"UP"}}`. Spring Boot's native health endpoint is also
 available at `http://localhost:8080/actuator/health`.
 
-Local database credentials are `app` / `app`. Hibernate schema auto-update is enabled for development only; use migrations and production-specific settings before deployment.
+The following curl will test the get_all query:
+
+```sh
+curl -X POST http://localhost:8080/graphql \
+  -H 'Content-Type: application/json' \
+  -d '{"query":"{ get_all { id line insertedAt modifiedAt } }"}'
+```
