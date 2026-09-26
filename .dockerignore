@@ -1,0 +1,6 @@
+.git
+.devcontainer
+target
+*.iml
+.idea
+.vscode
