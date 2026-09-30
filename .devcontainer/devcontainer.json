@@ -1,6 +1,6 @@
 {
   "name": "Spring Boot and PostgreSQL",
-  "dockerComposeFile": "../compose.yaml",
+  "dockerComposeFile": "docker-compose.yml",
   "service": "app",
   "workspaceFolder": "/workspaces",
   "forwardPorts": [8080, 5432],
@@ -30,5 +30,6 @@
       ]
     }
   },
-  "postCreateCommand": "bash .devcontainer/postCreateCommand.sh"
+  "postCreateCommand": "bash .devcontainer/postCreateCommand.sh",
+  "postStartCommand": "bash .devcontainer/postStartCommand.sh"
 }

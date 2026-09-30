@@ -12,6 +12,9 @@ ZSH_THEME="bira"
 # Which plugins would you like to load?
 plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 
+export PATH="$HOME/.grok/bin:$PATH"
+fpath=(~/.grok/completions/zsh $fpath)
+
 source $ZSH/oh-my-zsh.sh
 
 # Disable Oh My Zsh update prompts in the development container.
