@@ -1,7 +1,9 @@
+name: punchlines_j
+
 services:
   app:
     build:
-      context: .
+      context: ..
       dockerfile: .devcontainer/Dockerfile
     command: sleep infinity
     depends_on:
@@ -12,7 +14,8 @@ services:
       SPRING_DATASOURCE_USERNAME: app
       SPRING_DATASOURCE_PASSWORD: app
     volumes:
-      - .:/workspaces:cached
+      - ..:/workspaces:cached
+      - grok-home:/root/.grok
     working_dir: /workspaces
 
   db:
@@ -31,3 +34,4 @@ services:
 
 volumes:
   postgres-data:
+  grok-home:

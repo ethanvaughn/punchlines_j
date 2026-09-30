@@ -2,6 +2,11 @@
 
 Java 25, Spring Boot 4.1.1, Hibernate ORM 7.4.10.Final, and PostgreSQL 18.
 
+## Devcontainer
+
+This project runs in a devcontainer. All developer tools and dependent programs, like java/javac, Maven, git, Grok Build, Postgres/psql, code/VSCode Server, are set up to run within the container. 
+
+
 ## Start
 
 Open this folder in VS Code and run **Dev Containers: Reopen in Container**. The app container includes Java and Maven; PostgreSQL starts alongside it and is health-checked before the app container is ready.
@@ -12,10 +17,16 @@ Run the application from the devcontainer terminal:
 mvn spring-boot:run
 ```
 
+### Grok Build
+Grok Build is installed in the app container. Sign-in, config, and sessions are stored in the `grok-home` volume at `/root/.grok`, so they survive an image rebuild. From the devcontainer terminal:
+
+```sh
+grok login --device-auth
+grok
+```
+
+### PostgreSQL
 The database is available to the application at `db:5432` and is forwarded to local port `5432`. The application listens on port `8080`.
-
-
-## Database
 
 Local database credentials are `app` / `app`. Database changes are managed by Flyway migrations in `src/main/resources/db/migration/`; Hibernate validates the migrated schema at startup.
 

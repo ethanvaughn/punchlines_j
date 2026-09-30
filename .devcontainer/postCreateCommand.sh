@@ -24,3 +24,9 @@ echo
 echo -n "PostgreSQL version: "
 psql -V
 echo
+
+if command -v grok >/dev/null 2>&1; then
+	echo -n "Grok version: "
+	grok --version
+	echo
+fi
