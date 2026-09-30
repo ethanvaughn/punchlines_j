@@ -1,14 +1,14 @@
-package dev.punchlines;
+package dev.punchlines.health;
 
 import org.springframework.boot.health.actuate.endpoint.HealthEndpoint;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.stereotype.Controller;
 
 @Controller
-public class HealthQueryController {
+public class HealthController {
     private final HealthEndpoint healthEndpoint;
 
-    public HealthQueryController(HealthEndpoint healthEndpoint) {
+    public HealthController(HealthEndpoint healthEndpoint) {
         this.healthEndpoint = healthEndpoint;
     }
 

@@ -1,4 +1,4 @@
-package dev.punchlines;
+package dev.punchlines.health;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
@@ -10,7 +10,7 @@ import org.springframework.boot.health.actuate.endpoint.HealthEndpoint;
 import org.springframework.boot.health.actuate.endpoint.IndicatedHealthDescriptor;
 import org.springframework.boot.health.contributor.Health;
 
-class HealthQueryControllerTest {
+class HealthControllerTest {
     @Test
     void returnsActuatorHealthStatusCode() throws Exception {
         HealthEndpoint healthEndpoint = mock(HealthEndpoint.class);
@@ -19,7 +19,7 @@ class HealthQueryControllerTest {
         HealthDescriptor healthDescriptor = constructor.newInstance(Health.down().build());
         when(healthEndpoint.health()).thenReturn(healthDescriptor);
 
-        HealthQueryController controller = new HealthQueryController(healthEndpoint);
+        HealthController controller = new HealthController(healthEndpoint);
 
         assertEquals("DOWN", controller.health());
     }

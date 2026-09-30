@@ -1,4 +1,4 @@
-package dev.punchlines;
+package dev.punchlines.line;
 
 import java.time.OffsetDateTime;
 
