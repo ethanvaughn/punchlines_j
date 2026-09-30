@@ -1,4 +1,4 @@
-package dev.punchlines;
+package dev.punchlines.line;
 
 import java.util.List;
 
@@ -6,10 +6,10 @@ import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.stereotype.Controller;
 
 @Controller
-public class LineQueryController {
+public class LineController {
     private final LineRepository lineRepository;
 
-    public LineQueryController(LineRepository lineRepository) {
+    public LineController(LineRepository lineRepository) {
         this.lineRepository = lineRepository;
     }
 
